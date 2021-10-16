@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  color: #fff;
+}
+body {
+  background-color: #232323;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  transition: transform 0.5s;
+}
+.slider {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  max-width: 127.5rem;
+  border-radius: 2vw;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 70vw;
+}
+.elements_wrappers {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+input {
+  display: none;
+}
+.inputs-area {
+  display: flex;
+  flex-direction: row;
+}
+.radio_label {
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.radio-element {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #87ceeb;
+  display: block;
+  border: 0.125rem solid #87ceeb;
+  transition: all 0.5s;
+}
+.radio_label:hover .radio-element {
+  background-color: wheat;
+  border: 0.125rem solid wheat;
+}
+.radio_label:active .radio-element {
+  background-color: #8b0000;
+  border: 0.125rem solid #8b0000;
+}
+.radio_label:checked {
+  background-color: aqua;
+}
+
+#slide_1:checked ~ .elements_wrappers #dot_1 .radio-element,
+#slide_2:checked ~ .elements_wrappers #dot_2 .radio-element,
+#slide_3:checked ~ .elements_wrappers #dot_3 .radio-element,
+#slide_4:checked ~ .elements_wrappers #dot_4 .radio-element {
+  background-color: #232323;
+}
+#slide_1:checked ~ .slider img {
+  transform: translateX(0);
+}
+#slide_2:checked ~ .slider img {
+  transform: translateX(-100%);
+}
+#slide_3:checked ~ .slider img {
+  transform: translateX(-200%);
+}
+#slide_4:checked ~ .slider img {
+  transform: translateX(-300%);
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.text-element {
+  /* animation: 0.3s ease-in-out reverse text_visible; */
+  display: none;
+  width: 50vw;
+}
+
+#slide_1:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(1),
+#slide_2:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(2),
+#slide_3:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(3),
+#slide_4:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(4) {
+  display: block;
+  animation: 0.5s ease-in-out text_visible;
+}
+@keyframes text_visible {
+  from {
+    opacity: 0;
+    z-index: -1;
+    transform: translateX(-2vw);
+  }
+  to {
+    opacity: 1;
+    z-index: 2;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 62.5rem) {
+  .elements_wrappers {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  .text-wrapper {
+    margin-top: 2vw;
+  }
+  .text-element {
+    width: 100%;
+  }
+}

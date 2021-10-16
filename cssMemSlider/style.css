@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  transition: all 0.5s;
   color: #fff;
 }
 body {
@@ -10,12 +9,13 @@ body {
 img {
   max-width: 100%;
   display: block;
+  transition: transform 0.5s;
 }
 .slider {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  max-width: 2040px;
+  max-width: 127.5rem;
   border-radius: 2vw;
 }
 .wrapper {
@@ -37,6 +37,7 @@ input {
 .radio_label {
   padding: 0.5rem;
   cursor: pointer;
+  transition: all 0.5s;
 }
 .radio-element {
   width: 1rem;
@@ -44,11 +45,16 @@ input {
   border-radius: 50%;
   background-color: #87ceeb;
   display: block;
-  border: 2px solid #87ceeb;
+  border: 0.125rem solid #87ceeb;
+  transition: all 0.5s;
 }
 .radio_label:hover .radio-element {
   background-color: wheat;
-  border: 2px solid wheat;
+  border: 0.125rem solid wheat;
+}
+.radio_label:active .radio-element {
+  background-color: #8b0000;
+  border: 0.125rem solid #8b0000;
 }
 .radio_label:checked {
   background-color: aqua;
@@ -79,23 +85,31 @@ input {
   position: relative;
 }
 .text-element {
-  position: absolute;
+  /* animation: 0.3s ease-in-out reverse text_visible; */
+  display: none;
   width: 50vw;
-  opacity: 0;
-  z-index: -1;
-  transform: translate(-2vw, -2vw);
 }
 
 #slide_1:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(1),
 #slide_2:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(2),
 #slide_3:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(3),
 #slide_4:checked ~ .elements_wrappers .text-wrapper .text-element:nth-child(4) {
-  opacity: 1;
-  z-index: 2;
-  transform: translate(0, 0);
+  display: block;
+  animation: 0.5s ease-in-out text_visible;
 }
-
-@media (max-width: 1000px) {
+@keyframes text_visible {
+  from {
+    opacity: 0;
+    z-index: -1;
+    transform: translateX(-2vw);
+  }
+  to {
+    opacity: 1;
+    z-index: 2;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 62.5rem) {
   .elements_wrappers {
     flex-direction: column-reverse;
     justify-content: center;

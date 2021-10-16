@@ -15,11 +15,11 @@ img {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  max-width: 2040px;
 }
 .wrapper {
   margin: 0 auto;
   width: 70vw;
-  max-height: 90vh;
 }
 .elements_wrappers {
   margin-top: 10px;
